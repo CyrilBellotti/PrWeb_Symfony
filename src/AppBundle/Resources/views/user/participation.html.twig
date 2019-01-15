@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style_rectangle.css') }}">
+{% endblock %}
+{% block body %}
+
+    <div class="container-fluid body">
+        <div class="container">
+            <div class="row">
+                <div id="main-title">
+                    <h1>Mes inscriptions</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+
+                {% for event in events %}
+                <a href="{{ path('eventdetails', {'id':event.id} ) }}" >
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="box box-hover">
+                            <div class="info">
+                                <div class="particiption">
+                                    <div class="eventparticipation">
+                                        <h4>{{ event.name|e }}</h4>
+                                    </div>
+                                    <div class="eventdescription">
+                                        <p>{{ event.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+/*************************************
+* --------- Page d'accueil --------- *
+*************************************/
+
+
+/* ----- Style pour les titres de l'accueil ----- */
+#main-title {
+	display: flex;
+	justify-content: space-around;
+}
+
+#sub-title {
+	display: flex;
+	justify-content: space-around;
+}
+
+
+/* ----- Icone rond de couleur ----- */
+
+/* Style de l'icone */
+.box-icon {             
+    background-color: #57a544;
+    border-radius: 50%;
+    display: table;
+    height: 100px;
+    margin: 0 auto;
+    width: 100px;
+    margin-top: -61px;
+}
+    
+/* Style des différents Icone */
+#button-one {       
+    background-color:#890f00;
+}
+#button-second {
+    background-color:#c2242a;
+}
+#button-third {
+    background-color:#db0612;
+}
+
+/* Contenu du rond de couleur */
+.box-icon span {        
+    color: #fff;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* ----- Style pour les images dans les icones rond ----- */
+.img-accueil {
+	width:60px;
+	height:60px;
+	padding-bottom: auto;
+	padding-top:auto;
+	padding-left: auto;
+	padding-right:auto;
+}

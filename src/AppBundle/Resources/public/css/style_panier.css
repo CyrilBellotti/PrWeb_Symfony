@@ -1,0 +1,29 @@
+/************************************
+* --------- Page activité --------- *
+************************************/
+
+/* ----- Style pour les titres de l'accueil ----- */
+#main-title {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* ----- Style pour le bouton "Proposer une activité" ----- */
+#btn-acheter {
+	display: flex;
+	justify-content: space-around;
+}
+
+.img-produit-panier {
+	width: 100px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.text-section {
+	text-align: justify;
+	color:#717171;
+	font-size:16px;
+}

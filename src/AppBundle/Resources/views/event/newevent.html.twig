@@ -1,0 +1,164 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/Création_activité.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style_rectangle.css') }}">
+{% endblock %}
+{%  block body %}
+    <div class="container-fluid body">
+            <h1>Proposer une activité</h1>
+                <div class="row">
+                    <div class="col-md-2">
+                    <p> </p>
+                    </div>
+                <!-- edit form column -->
+                <div class="col-md-8">
+                    <form method="post" class="eventcreate" action="{{ path('newevent') }}">
+                        <div>
+                                <label id="titre">Titre:
+                                    <input type="text" name="name" class="titre">
+                                </label>
+                        </div>
+
+                        <div>
+                            <div class="form-group">
+                                <label class="control-label" id="description_activité">Description de l'activité :</label>
+                                <div>
+                                    <textarea name="description" class="form-control" rows="9"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label >Prix :
+                                <input type="number" name="price" class="titre">
+                            </label>
+                        </div>
+                        <div>
+                            <label >Adresse:
+                                <input type="text" name="address" class="titre">
+                            </label>
+                        </div>
+                        <div>
+                            <label >Ville:
+                                <input type="text" name="city" class="titre">
+                            </label>
+                        </div>
+                        <div>
+                            <label >Code Postal:
+                                <input type="text" name="code" class="titre">
+                            </label>
+                        </div>
+                        <div>
+                            <label >Pays:
+                                <input type="text" name="country" class="titre">
+                            </label>
+                        </div>
+                        <div>
+                            <label>Récurrence :
+                                <select name="recurrence" class="recurrence">
+                                    <option> - Récurrence - </option>
+                                    <option value="one shot">One-Shot</option>
+                                    <option value="Weekly">Hebdomadaire</option>
+                                    <option value="Monthly">Mensuel</option>
+
+                                </select>
+                            </label>
+                        </div>
+                        <div class="DateSelector">
+                            <label>Date Possible :
+                                <select name="Year" class="selectYear">
+                                    <option> - Year - </option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+
+                                </select>
+                                <select name="Month" class="selectMonth">
+                                    <option> - Month - </option>
+                                    <option value="01">January</option>
+                                    <option value="02">Febuary</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+
+                                <select name="Day" class="selectDay">
+                                    <option> - Day - </option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="buttons info">
+                            <button type="button" class="btn" onclick="AddDate()">Ajouter une date</button>
+                            <button type="button" class="btn" onclick="RemoveDate()">Supprimer la dernière date</button>
+                            <input type="submit" class="btn" value="Publier"/>
+                        </div>
+
+                    </form>
+                </div>
+                    <div class="col-md-2">
+                        <p> </p>
+                    </div>
+            </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $count = 1;
+        function AddDate() {
+            if($count<3){
+                $count++;
+                $dates=$(".DateSelector:first").clone().appendTo(".eventcreate").attr("name",$name = "Date"+$count);
+                $dates.find('.selectDay').attr("name","Day"+$count);
+                $dates.find('.selectMonth').attr("name","Month"+$count);
+                $dates.find('.selectYear').attr("name","Year"+$count);
+                $(".buttons").appendTo(".eventcreate");
+            }
+        }
+        function RemoveDate() {
+            if($count>1){
+                $(".DateSelector:last").remove();
+                $count--;
+            }
+        }
+    </script>
+{% endblock %}

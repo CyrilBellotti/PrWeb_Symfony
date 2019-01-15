@@ -1,0 +1,13 @@
+.body{
+background-color: #f2f2f2;
+}
+h1{
+color: #c2242a; 
+text-align: center;
+padding-bottom: 2%;
+padding-top: 1%;
+}
+
+#nom_produit{
+    padding-left: 3%;
+}

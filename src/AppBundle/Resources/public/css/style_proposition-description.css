@@ -1,0 +1,65 @@
+/************************************
+* --------- Page activité --------- *
+************************************/
+
+/* ----- Style pour les titres de l'accueil ----- */
+
+
+.text-section {
+	text-align: justify;
+	color:#717171;
+	font-size:16px;
+}
+
+.img-mosaique {
+	margin-left:auto;
+	margin-right:auto;
+	display: flex;
+	width:250px;
+}
+
+.btn-like {
+	margin-top:1%;
+	margin-left:auto;
+	margin-right:auto;
+	display: flex;
+}
+
+.btn-comment {
+	margin-bottom:10px;
+}
+
+.likes {
+
+}
+
+.like {
+	margin-left:auto;
+	margin-right:auto;
+	display: flex;}
+
+#author {
+	color:#717171;
+}
+
+
+#comment-space {
+	display:flex;
+	flex-direction: column;
+}
+
+
+#comments {
+
+}
+#author {
+	margin-right:auto;
+	display: flex;
+	width:250px;
+}
+
+#postdate {
+	margin-right:auto;
+	display: flex;
+	width:250px;
+}

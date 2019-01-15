@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/Création_article.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style_rectangle.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un produit</h1>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <p> </p>
+                </div>
+                <div class="col-md-8">
+                    <form method="post" action="">
+                        <div class="form-group" id="nom_produit">
+                            <label>
+                            Nom du produit :
+                            <input type="text" name="name"/>
+                        </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Description du produit :
+                            </label>
+                                <div>
+                                    <textarea name="description" class="form-control" rows="9"> </textarea>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                 Prix :
+                                <input type="number" name="price"/> €
+                            </label>
+                        </div>
+                        <div class="info">
+                            <input type="submit" class="btn" value="Créer le produit" />
+                        </div>
+                    </form>
+                </div>
+                </form>
+
+                <div class="col-md-2">
+                        <p> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

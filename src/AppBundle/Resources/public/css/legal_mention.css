@@ -1,0 +1,14 @@
+h1{
+    text-align: center;
+    color: #c2242a;
+    padding-top: 1%;
+}
+h3{
+    padding-left: 3%;
+    color: #c2242a;
+}
+p{
+    padding-left: 5%;
+}
+
+#btn-valider {margin-left: 100%;}

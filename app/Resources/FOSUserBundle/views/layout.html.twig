@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/connexion.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        Vous êtes déjà logger
+    {% else %}
+    <div id="test">
+        {% block content %}
+
+            <div class="loginmodal-container">
+                {% block fos_user_content %}{% endblock %}
+            </div>
+
+        {% endblock %}
+
+    </div>
+{% endif %}
+{% endblock %}
+

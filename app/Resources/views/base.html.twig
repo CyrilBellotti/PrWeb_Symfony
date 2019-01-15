@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}BDExiaLife{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/app/css/style_header.css') }}">
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        {% block stylesheets %}
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+    <header>
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                    <!-- Social Bar : Barre permettant d'accéder à la page facebook, twitter, et de nous contacter -->
+                    <div class="social-bar">
+                        <div class="social-bar-inner">
+                            <div id="facebook col-md-1 col-md-offset-9">
+                                <a href="https://www.facebook.com" class="social-link">
+                                    <img src="{{ asset('bundles/app/img/fb.png') }}" alt="Facebook", class="img-social">
+                                </a>
+                            </div>
+                            <div id="twitter col-md-1">
+                                <a href="https://twitter.com" class="social-link">
+                                    <img src="{{ asset('bundles/app/img/twitter.png') }}" alt="Twitter", class="img-social">
+                                </a>
+                            </div>
+                            <div id="contact col-md-1">
+                                <a href="#" class="social-link">
+                                    <img src="{{ asset('bundles/app/img/arobase.png') }}" alt="Contactez", class="img-social">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Main bar : Barre affichant le logo et le menu du site web -->
+
+                    <div class="main-bar">
+                        <!-- Header Logo : Affichage du Logo Exia -->
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 com-lg-12">
+                                <a href="{{ url('homepage') }}">
+                                    <img id="imgcesi" src="{{ asset('bundles/app/img/LogoExia.jpg') }}" alt="LogoExia">
+                                </a>
+                            </div>
+
+                            <!-- Bouton pour smartphone -->
+                            <button type="button" class="navbar-toggle" id="button-menu" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span class="sr-only" ></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- Header Nav : Menu du site web -->
+                        <nav class="header-nav">
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                <div class="container">
+                                    <div class="col-xs-12 col-sm-2 col-md-2 com-lg-2">
+                                        <ul class="list-nav">
+                                            <li>
+                                                <a href="{{ path('eventlist') }}" class="link-nav">Activités</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-2 col-md-2 com-lg-2">
+                                        <ul class="list-nav">
+                                            <li>
+                                                <a href="{{ path('propositionlist') }}" class="link-nav">Propositions</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-2 col-md-2 com-lg-2">
+                                        <ul class="list-nav">
+                                            <li>
+                                                <a href="{{ path('shoplist') }}" class="link-nav">Boutique</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-2 col-md-2 com-lg-2">
+                                        <ul class="list-nav">
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle link-nav" data-toggle="dropdown">Profil<b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="dropdown-submenu link-nav-sub">
+                                                        <a href="{{ url('userdetails') }}">Mon compte</a>
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a href="{{ path('buy') }}">Mon panier</a>
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a href="{{ url('participation') }}">Mes inscriptions</a>
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a href="{{ url('fos_user_security_logout') }}">Se déconnecter</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+
+
+                {% else %}
+
+                    <!-- Social Bar : Barre permettant d'accéder à la page facebook, twitter, et de nous contacter -->
+                    <div class="social-bar">
+                        <div class="social-bar-inner">
+                            <div id="facebook col-md-1 col-md-offset-9">
+                                <a href="https://www.facebook.com" class="social-link">
+                                    <img src="{{ asset('bundles/app/img/fb.png') }}" alt="Facebook" class="img-social">
+                                </a>
+                            </div>
+                            <div id="twitter col-md-1">
+                                <a href="https://twitter.com" class="social-link">
+                                    <img src="{{ asset('bundles/app/img/twitter.png') }}" alt="Twitter" class="img-social">
+                                </a>
+                            </div>
+                            <div id="contact col-md-1">
+                                <a href="#" class="social-link">
+                                    <img src="{{ asset('bundles/app/img/arobase.png') }}" alt="Contact" class="img-social">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Main bar : Barre affichant le logo et le menu du site web -->
+                    <div class="main-bar">
+                        <!-- Header Logo : Affichage du Logo Exia -->
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 com-lg-12">
+                                <a href="#accueil">
+                                    <img id="imgcesi" src="{{ asset('bundles/app/img/LogoExia.jpg') }}" alt="LogoExia">
+                                </a>
+                            </div>
+                            <!-- Bouton pour smartphone -->
+                        </div>
+                        <!-- Header Nav : Menu du site web -->
+                        <div class="header-nav">
+                            <div class="row">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-10 col-md-10 com-lg-10">
+                                            <ul class="list-nav" id="main-title">
+                                                <li>
+
+                                                    <h3>BDE Exia</h3>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-10 col-md-10 com-lg-10">
+                                            <ul class="list-nav" id="main-title">
+                                                <li>
+                                                    <h4>Centre Arras-Lille</h4>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endif %}
+
+            </header>
+    <div class ="body">
+    {% block body %}
+    {% endblock %}
+    </div>
+    {% block javascripts %}{% endblock %}
+    <footer>
+        <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-12 com-lg-12">
+                <ul class="list-footer">
+                    <li>
+                        <a href="{{ path('legalnotice') }}" class="link-footer">Mentions légales</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    </body>
+</html>

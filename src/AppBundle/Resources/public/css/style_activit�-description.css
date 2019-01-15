@@ -1,0 +1,63 @@
+/************************************
+* --------- Page activité --------- *
+************************************/
+
+/* ----- Style pour les titres de l'accueil ----- */
+#main-title {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* ----- Style pour le bouton "Proposer une activité" ----- */
+#btn-inscription {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.text-section {
+	text-align: justify;
+	color:#717171;
+	font-size:16px;
+}
+
+#btn-modifier {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 2%;
+}
+
+#btn-supprimer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#btn-confirmer-suppr {
+	width: 100%;
+}
+
+#btn-retour {
+	width: 100%;
+}
+
+
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+/****** LOGIN MODAL ******/
+.loginmodal-container {
+  padding: 30px;
+  max-width: 350px;
+  width: 100% !important;
+  background-color: #F7F7F7;
+  margin: 0 auto;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.loginmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+}
+
+
+

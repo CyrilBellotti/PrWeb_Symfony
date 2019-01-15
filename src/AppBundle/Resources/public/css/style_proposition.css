@@ -1,0 +1,23 @@
+/************************************
+* --------- Page activité --------- *
+************************************/
+
+/* ----- Style pour les titres de l'accueil ----- */
+#main-title {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* ----- Style pour le bouton "Proposer une activité" ----- */
+#btn-new-purpose {
+    display: flex;
+    justify-content: flex-end;
+    background-color: red;
+}
+
+.eventdescription {
+    color:red;
+}
+
+

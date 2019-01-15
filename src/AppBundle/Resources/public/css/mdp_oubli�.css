@@ -1,0 +1,29 @@
+body{
+background-color: #f2f2f2;
+}
+.mdp_oublié{
+	text-align: center;
+	color: #c2242a;
+	padding-left: 3%;
+	padding-bottom: 2%;
+}
+#btn_envoyer_le_code{
+	background-color: #c2242a;
+	border: none;
+
+}
+#btn_envoyer_le_code:hover{
+	background-color: #890f00;
+	border: none;
+
+}
+#btn_valider_le_mdp{
+	background-color: #c2242a;
+	border: none;
+
+}
+#btn_valider_le_mdp:hover{
+	background-color: #890f00;
+	border: none;
+
+}

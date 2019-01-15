@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style_rectangle.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style_boutique.css') }}">
+
+{% endblock %}
+{% block body %}
+
+    <div class="container-fluid body">
+        <div class="container">
+            <div class="row">
+                <div id="main-title">
+                    <h1>Boutique</h1>
+                </div>
+                <div class="col-lg-offset-8 col-md-offset-8 col-sm-offset-4 col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                    <form method="get" action="{{ path('buy') }}">
+                        <div class="info" id="btn-panier">
+                            <input class="btn" type="submit" value="Mon panier"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                    <form method="get" action="{{ path('newproduct') }}">
+                        <div class="info" id="btn-new-produit">
+                            <input class="btn" type="submit" value="Créer un produit"/>
+                        </div>
+                    </form>
+                </div>
+
+
+                {% for product in products %}
+
+                    <a href="{{ path('productdetail', {'id':product.id} ) }}" >
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="box box-hover">
+                                    <div class="info productTitle">
+                                        <h4 class="text-center">{{ product.name }}</h4>
+                                        <div class="row" style="display: flex;justify-content: space-around">
+                                            <div class="product">
+                                                {% if product.image %}
+                                                    <img class="img-product" src="{{ asset(product.image.path|e) }} " alt=" {{ product.image.path|e }} ">
+                                                {% endif %}
+                                            </div>
+                                            <div>
+                                                <p>{{ product.price }} €</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style_acc.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style_rectangle.css') }}">
+
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <p> </p>
+            </div>
+            <div class="col-md-8">
+                <div id="main-title">
+                    <h1>Approuvez une proposition</h1>
+                </div>
+                {% if is_granted("ROLE_ADMIN") %}
+                <div class="info">
+                    <p><strong>Choisissez une proposition :</strong></p>
+                </div>
+                <form method="post" action="{{ path('activeEvent') }}">
+                    {% for event in events %}
+                        <div class="new-input" style="color: #717171;
+    font-size: 16px;
+    padding-top: 10px;
+    text-align: justify;">
+                            <input type="radio" name="proposition" value="{{ event.id }}" checked> {{ event.name }}<br>
+                        </div>
+                    {% endfor %}
+                    <div class="info">
+                        <br>
+                        <input class="btn" id="btn-valider" type="submit" value="Valider">
+                    </div>
+                </form>
+                {% else %}
+                    <p>Vous n'avez pas accés à cette foncitonnalité.</p>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

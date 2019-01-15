@@ -1,0 +1,210 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style_rectangle.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style_proposition-description.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid body">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="box">
+                        <div class="info">
+                            <h4>{{ event }}</h4>
+                            {% if is_granted("ROLE_ADMIN") %}
+                            <form method="post" action="">
+                                <input type="hidden" name="id" value="{{ id }}">
+                                <div class="info" id="btn-inscription">
+                                    <input class="btn" type="submit" value="Supprimer">
+                                </div>
+                            </form>
+                            {% endif %}
+
+                            {% if event != "pas d event" %}
+
+
+
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-section">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                                                <div id='recurrence'>
+                                                    <strong>Récurrence :</strong> {{ recurrence }}
+                                                </div>
+                                                <div id="creationdate">
+                                                    <strong>Creation date :</strong> {{ creationdate }}
+                                                </div>
+                                                <div id="deadline">
+                                                    <strong>Deadline :</strong> {{ deadline }}
+                                                </div>
+                                                <div id='price'>
+                                                    <strong>Lieu de l'évènement :</strong> {{ locationAddress }} - {{ locationCity }} - {{ locationPostal }} - {{ locationCountry }}
+                                                </div>
+                                                <div id='address'>
+                                                    <strong>Coût de l'évènement :</strong> {{ price }} €
+                                                </div>
+                                                {% if isValid %}
+                                                    <div>
+                                                        <strong> Date :</strong> {{ validDate|date('d-m-Y') }}
+                                                    </div>
+
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-section">
+                                            <div id="description">
+                                                <hr>
+                                                <p><strong>Description :</strong></p>
+                                                <p>{{ description }}</p>
+                                            </div>
+                                        </div>
+
+                                        {% if isValid == 1  %}
+                                            {% if not hasregistered %}
+                                                <form method="post" action="{{ path('eventregistration') }}">
+                                                    <input type="hidden" name="id" value="{{ id }}">
+                                                    <div class="info" id="btn-inscription">
+                                                        <input class="btn" type="submit" value="S'inscrire">
+                                                    </div>
+                                                </form>
+
+                                            {% else %}
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-section">
+                                                    <p>Vous êtes déjà inscrit pour cette activité</p>
+
+                                                </div>
+
+                                            {% endif %}
+                                        {% endif %}
+
+                                        <hr>
+                                        <div class="listparticipant" hidden>
+                                            {% for user in users %}
+                                                <p>{{ user.username }}</p>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="info">
+                                            <button type="button" class="btn" id="buttonToggle">Participants</button>
+                                        </div>
+
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-section">
+                                            <hr>
+                                            {% if isValid %}
+
+                                                <div id="images">
+                                                {% if images.count != 0 %}
+                                                    {% for image in images %}
+                                                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
+                                                            <div id="image">
+                                                                <img src="{{ asset(image.path|e) }} " alt=" {{ image.path|e }} " class="img-mosaique"/>
+                                                                <form method="post" action="{{ path('like') }}">
+                                                                    <input type="hidden" name="idImage" value="{{ image.id }}"/>
+                                                                    <input type="hidden" name="idEvent" value="{{ id }}"/>
+                                                                    <div class="info">
+                                                                        <input class="btn btn-like" type="submit" value="J'aime"/>
+                                                                    </div>
+                                                                </form>
+
+                                                                <div class="likes"> {{ image.likeds.count() }} j'aime </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    Pas d'images
+                                                {% endif %}
+                                            </div>
+                                            {% else %}
+                                                {% if not hasVoted %}
+                                                    <p><strong>Votez pour une date :</strong></p>
+                                                    <form method="post" action="{{ path('vote') }}">
+                                                        {% for date in dates %}
+                                                            <div>
+                                                                <input type="radio" name="dateid" value="{{ date.id }}" checked>{{ date.date|date('d/m/Y') }} votes : {{ date.votes.count() }}
+                                                            </div>
+                                                        {% endfor %}
+
+                                                        <input type="hidden" name="eventid" value="{{ id }}">
+                                                        <div class="info" id="btn-inscription">
+                                                            <input class="btn" type="submit" value="Votez">
+                                                        </div>
+                                                    </form>
+                                                {% else %}
+                                                    {% for date in dates %}
+                                                        <div>
+                                                            {{ date.date|date('d/m/Y') }} votes : {{ date.votes.count() }}
+
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            {% endif %}
+
+                                        </div>
+
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-section">
+                                            <hr>
+                                            <div class="espace-com">
+                                                <form method="post" action="{{ path('comment') }}">
+                                                    <textarea name="comment"></textarea>
+                                                    <input type="hidden" name="eventid" value="{{ id }}">
+                                                    <div class="info">
+                                                        <input class="btn btn-comment" type="submit" value="Commenter"/>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div id="comments">
+                                                {% if comments.count != 0 %}
+                                                    {% for comment in comments %}
+
+                                                        <div class="col-sm-6">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    <strong><div id="author">
+                                                                            {{ comment.user|e }}
+                                                                        </div></strong> <span class="text-muted">Commentaire du {{ comment.date|date }}</span>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    {{ comment.content|e }}
+                                                                </div><!-- /panel-body -->
+                                                            </div><!-- /panel panel-default -->
+                                                        </div><!-- /col-sm-5 -->
+
+
+
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <p>Pas de commentaires</p>
+                                                {% endif %}
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#buttonToggle').click(function () {
+                $('.listparticipant').toggle();
+            })
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,32 @@
+.body{
+background-color: #f2f2f2;
+}
+h1{
+color: #c2242a; 
+text-align: center;
+}
+#titre{
+    padding-left: 5%;
+    padding-bottom: 1%;
+}
+
+.avatar{
+    padding-left: 1px;
+}
+#btn_valider_le_produit{
+    background-color: #c2242a;
+    border: none;
+}
+#btn_valider_le_produit:hover{
+    background-color: #890f00;
+    border: none;
+}
+.btn{
+    background-color: #c2242a;
+}
+.btn:hover{
+    background-color: #890f00;
+}
+#description_activité{
+	padding-bottom: 1%;
+}

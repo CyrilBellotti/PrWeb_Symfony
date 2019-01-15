@@ -1,0 +1,164 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/connexion.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/style_acc.css') }}">
+{% endblock %}
+{% block header %}{% endblock %}
+{% block body %}
+
+     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+         <div class="container-fluid body">
+             <div class="container">
+                 <div class="row">
+                     <div id="main-title">
+                         <h1>BDE Cesi Exia</h1>
+                     </div>
+                     <div id="sub-title">
+                         <h2>Centre : Arras / Lille</h2>
+                     </div>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                     <div class="box">
+                         <a href="{{ url('eventlist') }}">
+                             <div class="box-icon" id="button-one">
+                                 <span class="fa fa-4x fa-html5 "><img src="{{ asset('bundles/app/img/event.png') }}" alt="Img menu" class="img-accueil"></span>
+                             </div>
+                         </a>
+
+                         <div class="info">
+                             <h4 class="text-center">Activités</h4>
+                             {% for event in events %}
+                                 <hr>
+                                <h5>{{ event.name }}</h5>
+                                <p>{{ event.description }}</p>
+                                 <a href="{{ path('eventdetails', {'id':event.id}) }}" class="btn btn-seemore">Voir plus</a><br><br>
+
+                             {% endfor %}
+                         </div>
+
+                     </div>
+                 </div>
+
+                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                     <div class="box">
+                         <a href="{{ url('propositionlist') }}">
+                             <div class="box-icon" id="button-second">
+                                 <span class="fa fa-4x fa-html5 "><img src="{{ asset('bundles/app/img/idea.png') }}" alt="Img menu" class="img-accueil"></span>
+
+                             </div>
+                         </a>
+                         <div class="info">
+                             <h4 class="text-center">Propositions</h4>
+                             {% for proposition in propositions %}
+                                 <hr>
+                                 <h5>{{ proposition.name }}</h5>
+                                 <p>{{ proposition.description }}</p>
+                                 <a href="{{ path('eventdetails', {'id':proposition.id}) }}" class="btn btn-seemore">Voir plus</a><br><br>
+
+                             {% endfor %}
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                     <div class="box">
+                         <a href="{{ url('shoplist') }}">
+                             <div class="box-icon" id="button-third">
+                                 <span class="fa fa-4x fa-html5 "><img src="{{ asset('bundles/app/img/caddie.png') }}" alt="Img menu" class="img-accueil"></span>
+                             </div>
+                         </a>
+                         <div class="info">
+                             <h4 class="text-center">Boutique</h4>
+                             {% for product in products %}
+                                 <hr>
+                                 <h5>{{ product.name }}</h5>
+                                 <p>{{ product.description }}</p>
+                                 <a href="{{ path('productdetail', {'id':product.id}) }}" class="btn btn-seemore">Voir plus</a><br><br>
+
+                             {% endfor %}
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         </div>
+
+
+
+
+
+
+
+
+
+
+    {% else %}
+
+        <!-- Boutton de connexion  -->
+        <form action="{{ path('fos_user_security_login') }}" method="get">
+            <div class="col-xs-12" id="btn-connexion">
+                <input type="submit" value="Connexion" id="btn_connexion-inner" data-toggle="modal" data-target="#login-modal"/>
+            </div>
+        </form>
+        <!-- Boutton d'inscription -->
+        <form action="{{ path('fos_user_registration_register') }}" method="get">
+            <div class="col-xs-12" id="btn-inscription">
+                <input type="submit" value="Inscription" id="btn_inscription-inner" data-toggle="modal" data-target="#inscription-modal"/>
+            </div>
+        </form>
+        <!-- Carousel -->
+        <div class="container">
+            <div id="main_area">
+                <!-- Slider -->
+                <div class="row">
+                    <div class="col-xs-12" id="slider">
+                        <!-- Top part of the slider -->
+                        <div class="row">
+                            <div class="col-sm-12" id="carousel-bounding-box">
+                                <div class="carousel slide" id="myCarousel">
+                                    <!-- Carousel items -->
+                                    <div class="carousel-inner">
+                                        <div class="active item" data-slide-number="0">
+                                            <img src="http://placehold.it/770x300&text=one">
+                                        </div>
+                                        <div class="item" data-slide-number="1">
+                                            <img src="http://placehold.it/770x300&text=two">
+                                        </div>
+                                        <div class="item" data-slide-number="2">
+                                            <img src="http://placehold.it/770x300&text=three">
+                                        </div>
+                                        <div class="item" data-slide-number="3">
+                                            <img src="http://placehold.it/770x300&text=four">
+                                        </div>
+                                        <div class="item" data-slide-number="4">
+                                            <img src="http://placehold.it/770x300&text=five">
+                                        </div>
+                                        <div class="item" data-slide-number="5">
+                                            <img src="http://placehold.it/770x300&text=six">
+                                        </div>
+                                    </div><!-- Carousel nav -->
+                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-4" id="carousel-text">
+                                <!-- Add Text Carousel -->
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/Slider-->
+            </div>
+        </div>
+
+
+{% endif %}
+
+{% endblock %}
+
+

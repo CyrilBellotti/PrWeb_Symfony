@@ -1,0 +1,23 @@
+.body{
+background-color: #f2f2f2;
+}
+h1{
+	color: #c2242a;
+	text-align: center;
+	padding-top: 1%;
+}
+h3{
+
+	margin-bottom: 5%;
+}
+.avatar{
+	padding-left: 1px;
+}
+.btn-primary{
+	background-color: #c2242a;
+	border: none;
+}
+.btn-primary:hover{
+	background-color: #c2242a;
+	border: none;
+}

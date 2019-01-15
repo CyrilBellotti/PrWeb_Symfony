@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style_rectangle.css') }}">
+
+{% endblock %}
+{% block body %}
+
+    <div class="container-fluid body">
+        <div class="container">
+            <div class="row">
+                <div id="main-title">
+                    <h1>Propositions</h1>
+                </div>
+                <form method="get" action="{{ path('newevent') }}">
+                    <div class="info" id="btn-new-purpose">
+                        <input class="btn" type="submit" value="Proposer une idée"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+
+                {% for event in events %}
+                    <a href="{{ path('eventdetails', {'id':event.id} ) }}" >
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="box box-hover">
+                                <div class="info">
+                                    <div class="evenement" id="{{ event.id|e }}">
+                                        <div class="eventtitle">
+                                            <h4>{{ event.name|e }}</h4>
+                                        </div>
+                                        <div class="eventdescription">
+                                            <p>{{ event.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

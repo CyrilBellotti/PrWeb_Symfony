@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <h1>Participant à l'événement</h1>
+    {% for user in users %}
+        <div>
+            {{ user.username }}
+        </div>
+    {% endfor %}
+{% endblock %}

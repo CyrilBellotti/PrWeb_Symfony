@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
+        <form method="post" action="">
+            <label>Utilisateurs : Roles
+                <select name="userid">
+                    {% for user in users %}
+                        <option value="{{ user.id }}">{{ user.username }} : {{ user.roles[0] }}</option>
+                    {% endfor %}
+
+                </select>
+            </label>
+            <label>
+                <select name="role">
+                    <option value="ROLE_USER">USER : Eleve</option>
+                    <option value="ROLE_ADMIN">ADMIN : Membre du BDE</option>
+                    <option value="ROLE_SUPER_ADMIN">SUPER ADMIN : Membre staff cesi</option>
+                </select>
+            </label>
+            <input type="submit" value="Changer le Role">
+        </form>
+    {% else %}
+        Vous n'avez pas les droits pour accéder à cette fonctionnalité
+    {% endif %}
+{% endblock %}
